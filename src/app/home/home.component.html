@@ -10,27 +10,28 @@
 			<h2>
 				Import your .csv files and create your own charts for your next data analysis needs
 			</h2>
-			<button>
-				Get started !
-			</button>
+			<label class='file-input' for="file">
+				Select File >
+				<input
+					class='file-input'
+					type='file'
+					id='file'
+					(change)='handleFileInput($event)'
+				>
+			</label>
+		</div>
+	</div>
+	<div *ngIf='headers !== undefined && lines !== undefined'>
+		<div class="row">
+			<div *ngFor="let header of headers">
+				<h1>{{header}}</h1>
+			</div>
+		</div>
+		<div *ngFor="let line of lines">
+			<div class='row' *ngFor="let data of line">
+				<p>{{data}}</p>
+			</div>
 		</div>
 	</div>
 </main>
-<div class='form-group'>
-	<label for='file'>Choose File</label>
-	<input type='file'
-		   id='file'
-		   (change)='handleFileInput($event)'>
-</div>
-<div *ngIf='headers !== undefined && lines !== undefined'>
-	<div class="row">
-		<div *ngFor="let header of headers">
-			<h1>{{header}}</h1>
-		</div>
-	</div>
-	<div *ngFor="let line of lines">
-		<div class='row' *ngFor="let data of line">
-			<p>{{data}}</p>
-		</div>
-	</div>
-</div>
+
