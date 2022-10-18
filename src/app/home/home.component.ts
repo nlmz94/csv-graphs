@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
-	fileToUpload: File | null = null
-	public headers: string[] | undefined
-	public lines: [string[]] | undefined
-	private rawString: string | ArrayBuffer | null | undefined
+	fileToUpload: File | null = null;
+	public headers: string[] | undefined;
+	public lines: object[] | undefined;
+	private rawString: string | ArrayBuffer | null | undefined;
 
 	constructor() {
 	}
@@ -24,19 +24,19 @@ export class HomeComponent implements OnInit {
 			console.log(this.fileToUpload);
 			const reader = new FileReader();
 			reader.readAsText(this.fileToUpload);
-			reader.addEventListener("load", () => {
+			reader.addEventListener('load', () => {
 				this.rawString = reader.result;
 				if (typeof this.rawString === 'string') {
-					this.lines = [[]]
-					this.headers = []
+					this.lines = [[]];
+					this.headers = [];
 					let allTextLines = this.rawString.split(/\r\n|\n/);
 					this.headers = allTextLines[0].split(',');
-					for ( let i = 1; i < allTextLines.length; i++) {
+					for (let i = 1; i < allTextLines.length; i++) {
 						let data = allTextLines[i].split(',');
 						if (data.length == this.headers.length) {
-							let line = [];
-							for ( let j = 0; j < this.headers.length; j++) {
-								line.push(data[j]);
+							let line: { [key: string]: string } = {};
+							for (let j = 0; j < this.headers.length; j++) {
+								line = { ...line, [this.headers[j]]: data[j] };
 							}
 							this.lines.push(line);
 						}
