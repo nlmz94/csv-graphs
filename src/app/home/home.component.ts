@@ -7,12 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 	fileToUpload: File | null = null;
-	public CSVConstants = {
-		tokenDelimeter: ',',
-		isHeaderPresentFlag: true,
-		validateHeaderAndRecordLengthFlag: true,
-		valildateFileExtenstionFlag: true,
-	};
 
 	constructor() {
 	}
