@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     const canvas = document.getElementById('canvas3d');
     const app = new Application(<HTMLCanvasElement>canvas);
-    app.load('https://prod.spline.design/ZZ6xHiy1V3PnvIoZ/scene.splinecode');
+    app.load('https://prod.spline.design/ZZ6xHiy1V3PnvIoZ/scene.splinecode').then();
   }
 
 }
