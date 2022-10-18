@@ -7,3 +7,15 @@
 		   id='file'
 		   (change)='handleFileInput($event)'>
 </div>
+<div *ngIf='headers !== undefined && lines !== undefined'>
+	<div class="row">
+		<div *ngFor="let header of headers">
+			<h1>{{header}}</h1>
+		</div>
+	</div>
+	<div *ngFor="let line of lines">
+		<div class='row' *ngFor="let data of line">
+			<p>{{data}}</p>
+		</div>
+	</div>
+</div>
