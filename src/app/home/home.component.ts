@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 	}
 
 	handleFileInput(e: Event) {
+		const startTime = performance.now();
 		const target = <HTMLInputElement>e.target;
 		if (target.files) {
 			this.fileToUpload = target.files[0];
@@ -46,5 +47,7 @@ export class HomeComponent implements OnInit {
 				}
 			}, false);
 		}
+		const endTime = performance.now();
+		console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
 	}
 }
