@@ -26,9 +26,7 @@
 	</div>
 	<div *ngIf='headers !== undefined && lines !== undefined'>
 		<div class='row'>
-			<div *ngFor='let header of headers'>
-				<h1>{{header}}</h1>
-			</div>
+			<table-component [headers]=headers [lines]=lines></table-component>
 		</div>
 		<div *ngFor='let line of lines'>
 			<p>{{line | json}}</p>

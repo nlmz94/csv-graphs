@@ -30,10 +30,21 @@ export class HomeComponent implements OnInit {
 				if (typeof this.rawString === 'string') {
 					this.lines = [[]];
 					this.headers = [];
-					let allTextLines = this.rawString.split(/\r\n|\n/);
+					let allTextLines = this.rawString.split(/\r\n|\n/)
 					this.headers = allTextLines[0].split(',');
+
+					let last = 0
+
 					for (let i = 1; i < allTextLines.length; i++) {
-						let data = allTextLines[i].split(',');
+						let first = allTextLines[i].indexOf('"', last);
+						let second = allTextLines[i].indexOf('"', first+1);
+						let data = [allTextLines[i].substring(first+1, second).replaceAll(",", " ")]
+
+						console.log(first);
+						console.log(second);
+						console.log(data);
+
+						last = second
 						if (data.length == this.headers.length) {
 							let line: { [key: string]: string } = {};
 							for (let j = 0; j < this.headers.length; j++) {
