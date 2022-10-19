@@ -8,6 +8,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CsvService } from './shared/csv.service';
 import { TableComponent } from './table/table.component';
 
 @NgModule({
@@ -16,6 +18,7 @@ import { TableComponent } from './table/table.component';
     NavComponent,
     FooterComponent,
     HomeComponent,
+    DashboardComponent,
   	TableComponent,
   ],
   imports: [
@@ -24,7 +27,9 @@ import { TableComponent } from './table/table.component';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+	  CsvService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

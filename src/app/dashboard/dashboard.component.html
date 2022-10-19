@@ -1,0 +1,13 @@
+<div id='main'>
+	<p>dashboard works!</p>
+	<div *ngIf='headers !== undefined && lines !== undefined'>
+		<div class='row'>
+			<div *ngFor='let header of headers'>
+				<h1>{{header}}</h1>
+			</div>
+		</div>
+		<div *ngFor='let line of lines'>
+			<p>{{line | json}}</p>
+		</div>
+	</div>
+</div>

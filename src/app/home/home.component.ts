@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CsvService } from '../shared/csv.service';
 
 @Component({
 	selector: 'app-home',
@@ -11,14 +13,18 @@ export class HomeComponent implements OnInit {
 	public lines: object[] | undefined;
 	private rawString: string | ArrayBuffer | null | undefined;
 
-	constructor() {
+	constructor(private router: Router, private csvService: CsvService) {
 	}
 
 	ngOnInit(): void {
 	}
 
+	ngOnDestroy() {
+		this.csvService.headers = this.headers;
+		this.csvService.lines = this.lines;
+	}
+
 	handleFileInput(e: Event) {
-		const startTime = performance.now();
 		const target = <HTMLInputElement>e.target;
 		if (target.files) {
 			this.fileToUpload = target.files[0];
@@ -53,12 +59,9 @@ export class HomeComponent implements OnInit {
 							this.lines.push(line);
 						}
 					}
-					console.log(this.headers); //The data headers.
-					console.log(this.lines); //The data in the form of 2 dimensional array.
+					this.router.navigate(['/dashboard']).then();
 				}
 			}, false);
 		}
-		const endTime = performance.now();
-		console.log(`Call to doSomething took ${endTime - startTime} milliseconds`)
 	}
 }
