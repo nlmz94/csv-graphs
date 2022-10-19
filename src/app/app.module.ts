@@ -8,7 +8,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { CursorComponent } from './cursor/cursor.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { CursorComponent } from './cursor/cursor.component';
     NavComponent,
     FooterComponent,
     HomeComponent,
-    CursorComponent
   ],
   imports: [
     BrowserModule,
