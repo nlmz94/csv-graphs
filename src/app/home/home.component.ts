@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 	public headers: string[] | undefined;
 	public lines: object[] | undefined;
 	private rawString: string | ArrayBuffer | null | undefined;
+	public separator: string | undefined;
 
 	constructor(private router: Router, private csvService: CsvService) {
 	}
@@ -37,14 +38,14 @@ export class HomeComponent implements OnInit {
 					this.lines = [[]];
 					this.headers = [];
 					let allTextLines = this.rawString.split(/\r\n|\n/)
-					this.headers = allTextLines[0].split(',');
+					this.headers = allTextLines[0].split(this.separator ?? ",");
 
 					let last = 0
 
 					for (let i = 1; i < allTextLines.length; i++) {
 						let first = allTextLines[i].indexOf('"', last);
 						let second = allTextLines[i].indexOf('"', first+1);
-						let data = [allTextLines[i].substring(first+1, second).replaceAll(",", " ")]
+						let data = [allTextLines[i].substring(first+1, second).replaceAll(this.separator ?? ",", " ")]
 
 						console.log(first);
 						console.log(second);

@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CsvService } from './shared/csv.service';
 import { TableComponent } from './table/table.component';
 import { ChartBarComponent } from './chart-bar/chart-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,13 @@ import { ChartBarComponent } from './chart-bar/chart-bar.component';
   	TableComponent,
     ChartBarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule
-  ],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		BrowserAnimationsModule,
+		MaterialModule,
+		FormsModule,
+	],
   providers: [
 	  CsvService
   ],

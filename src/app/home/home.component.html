@@ -13,15 +13,21 @@
 			<h2>
 				Import your .csv files and create your own charts for your next data analysis needs
 			</h2>
-			<label class='file-input' for='file'>
-				Select File >
-				<input
-					class='file-input'
-					type='file'
-					id='file'
-					(change)='handleFileInput($event)'
-				>
-			</label>
+			<div>
+				<label class='file-input' for='file'>
+					Select File >
+					<input [disabled]="separator === undefined"
+						class='file-input'
+						type='file'
+						id='file'
+						(change)='handleFileInput($event)'
+					>
+				</label>
+				<mat-radio-group id='radioSeparator' aria-label="Select the separator" [(ngModel)]="separator">
+					<mat-radio-button value=",">Comma</mat-radio-button>
+					<mat-radio-button value=";">Semi-colon</mat-radio-button>
+				</mat-radio-group>
+			</div>
 		</div>
 	</div>
 	<div *ngIf='headers !== undefined && lines !== undefined'>
