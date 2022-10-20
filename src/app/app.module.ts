@@ -11,6 +11,7 @@ import { MaterialModule } from './material.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CsvService } from './shared/csv.service';
 import { TableComponent } from './table/table.component';
+import { ChartBarComponent } from './chart-bar/chart-bar.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { TableComponent } from './table/table.component';
     HomeComponent,
     DashboardComponent,
   	TableComponent,
+    ChartBarComponent
   ],
   imports: [
     BrowserModule,
