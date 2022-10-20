@@ -14,6 +14,7 @@ import { TableComponent } from './table/table.component';
 import { ChartBarComponent } from './chart-bar/chart-bar.component';
 import { FormsModule } from '@angular/forms';
 import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MAT_RADIO_DEFAULT_OPTIONS } from '@angular/material/radio';
 		BrowserAnimationsModule,
 		MaterialModule,
 		FormsModule,
+		NgxChartsModule
 	],
   providers: [
 	  CsvService,

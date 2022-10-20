@@ -1,5 +1,12 @@
-<div id='main'>
-	<p>dashboard works!</p>
+<main>
+	<div class='home-container'>
+		<div class='filter-section'>
+			<h1>Filters</h1>
+		</div>
+		<div class='charts-section'>
+			<app-chart-bar></app-chart-bar>
+		</div>
+	</div>
 	<div *ngIf='headers !== undefined && lines !== undefined'>
 		<div class='row'>
 			<div *ngFor='let header of headers'>
@@ -10,4 +17,4 @@
 			<p>{{line | json}}</p>
 		</div>
 	</div>
-</div>
+</main>

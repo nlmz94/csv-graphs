@@ -1,3 +1,17 @@
-<div>
-	<canvas id="myCharts"></canvas>
+<div class='chart-row'>
+	<div class='chart-column'>
+		<ngx-charts-bar-vertical [legend]='true' [view]='[500, 250]' [results]='productSales'></ngx-charts-bar-vertical>
+		<h2>Bar chart</h2>
+	</div>
+	<div class='chart-column'>
+		<ngx-charts-pie-chart [legend]='true' [view]='[500, 250]' [results]='productSales'></ngx-charts-pie-chart>
+		<h2>Line chart</h2>
+	</div>
 </div>
+<div class='chart-row'>
+	<div class='chart-column'>
+		<ngx-charts-number-card [view]='[1000, 250]' [results]='productSales'></ngx-charts-number-card>
+		<h2>Cards chart</h2>
+	</div>
+</div>
+
