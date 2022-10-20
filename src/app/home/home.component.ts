@@ -26,6 +26,28 @@ export class HomeComponent implements OnInit {
 	}
 
 	handleFileInput(e: Event) {
+
+		function csvToArray(str:string, delimiter:string) {
+			const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+
+			const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+			const arr = rows.map(function (row:string) {
+				const test = row.replace(/,(?=[^"]*"[^"]*(?:"[^"]*"[^"]*)*$)/g, '')
+				if (row.indexOf('"') > 0) {
+					console.log("test")
+				}
+				const values = test.split(delimiter);
+				const el = headers.reduce(function (object:any, header:string, index:number) {
+				object[header] = values[index];
+				return object;
+			}, {});
+			return el;
+		});
+
+			console.log(arr);
+			return arr;
+		}
+
 		const target = <HTMLInputElement>e.target;
 		if (target.files) {
 			this.fileToUpload = target.files[0];
@@ -34,28 +56,12 @@ export class HomeComponent implements OnInit {
 			reader.readAsText(this.fileToUpload);
 			reader.addEventListener('load', () => {
 				this.rawString = reader.result;
-				if (typeof this.rawString === 'string') {
-					this.lines = [[]];
-					this.headers = [];
-					let allTextLines = this.rawString.split(/\r\n|\n/);
-					this.headers = allTextLines[0].split(this.separator ?? ',');
-					let last = 0;
-					for (let i = 1; i < allTextLines.length; i++) {
-						let first = allTextLines[i].indexOf('"', last);
-						let second = allTextLines[i].indexOf('"', first + 1);
-						let data = [allTextLines[i].substring(first + 1, second).replaceAll(this.separator ?? ',', ' ')];
-						last = second;
-						if (data.length == this.headers.length) {
-							let line: { [key: string]: string } = {};
-							for (let j = 0; j < this.headers.length; j++) {
-								line = { ...line, [this.headers[j]]: data[j] };
-							}
-							this.lines.push(line);
-						}
-					}
-					this.router.navigate(['/dashboard']).then();
-				}
+				if (typeof this.rawString === 'string')
+					csvToArray(this.rawString, ",")
+				// this.lines.push(line);
+				// this.router.navigate(['/dashboard']).then();
 			}, false);
 		}
 	}
+
 }
