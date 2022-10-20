@@ -26,13 +26,27 @@ main
 input[type=file]
 	display: none
 
+input[type=file]:disabled+label
+	cursor: default
+	background-color: #DCDCDC
+	color: #A3A3A3
+	border-radius: 4px
+	padding-top: 8px
+	padding-bottom: 8px
+	padding-left: 16px
+	padding-right: 16px
+	box-shadow: 0 5px 5px -3px #0003,0 8px 10px 1px #00000024,0 3px 14px 2px #0000001f
+
 .file-input
 	cursor: pointer
-	width: fit-content
-	padding: 10px
-	border-radius: 10px
-	background-color: #C2625F
-	transition: .2s ease-in-out
+	background-color: #ff4081
+	border-radius: 4px
+	padding-top: 8px
+	padding-bottom: 8px
+	padding-left: 16px
+	padding-right: 16px
+	transition: transform .2s ease-in-out
+	box-shadow: 0 5px 5px -3px #0003,0 8px 10px 1px #00000024,0 3px 14px 2px #0000001f
 
 .file-input:hover
 	transform: scale(1.2)
